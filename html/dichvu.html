@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+            let dh1 = { img: "../img//dongho1.jpg",     name: "VA 216", description: "Đồng  Hồ Giá:  400.000vnđ",masp:1 ,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh2 = { img: "../img//dongho2.jpg",     name: "PA 5566", description: "Đồng  Hồ Giá:  450.000vnđ" ,masp:2,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh3 = { img: "../img//dongho3.jpg",     name: "DZKG 001", description: "Đồng  Hồ Giá:  380.000vnđ" ,masp:3,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh4 = { img: "../img//dongho4.jpg",     name: "1023 LT", description: "Đồng  Hồ Giá:  500.000vnđ" ,masp:4,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh5 = { img: "../img//dongho5.jpg",     name: "DZKX3D9", description: "Đồng  Hồ Giá:  720.000vnđ" ,masp:5,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh6 = { img: "../img//dongho6.jpg",     name: "AY 001004", description: "Đồng  Hồ Giá:  810.000vnđ" ,masp:6,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh7 = { img: "../img//dongho7.jpg",     name: "SKMEI 0955", description: "Đồng  Hồ Giá:  510.000vnđ" ,masp:7,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh8 = { img: "../img//donghodt1.jpg",   name: "DH01", description: "Đồng  Hồ Giá:  610.000vnđ" ,masp:8,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh9 = { img: "../img//donghodt2.jpg",   name: "JAH 101 ", description: "Đồng  Hồ Giá:  1110.000vnđ" ,masp:9,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh10 = { img: "../img//donghodt3.jpg",  name: "ECONNOMI ", description: "Đồng  Hồ Giá:  990.000vnđ" ,masp:10,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh11 = { img: "../img//donghodt4.jpg",  name: "7D1UDF", description: "Đồng  Hồ Giá:  310.000vnđ" ,masp:11,thuonghieu:"Thương hiệu:Việt Nam"}
+            let dh12 = { img: "../img//donghodt5.jpg",  name: "BE 9180", description: "Đồng  Hồ Giá:  540.000vnđ" ,masp:12,thuonghieu:"Thương hiệu:Việt Nam"}
+
+            let dsdh = [dh1, dh2, dh3, dh4, dh5, dh6, dh7, dh8, dh9, dh10, dh11, dh12];
+            function hienthiChitiet(masp) {
+            let dh = dsdh.find(dhTemp => dhTemp.masp === masp);
+            localStorage.setItem("img", dh.img);
+            localStorage.setItem("name", dh.name);
+            localStorage.setItem("description", dh.description);
+            localStorage.setItem("thuonghieu", dh.thuonghieu);
+            localStorage.setItem("ma", dh.masp);
+        }
+        $(document).ready(function(){
+            function hiendongho(dh) {
+            let hdh =
+               
+
+
+                "<figure class='col-lg-3 img -thumbnail'>" +
+                "<img class='rounded w-100' width='215'  src='" + dh.img + "' alt='" + dh.name + "'>" +
+                "<a href='chitietdongho.html' onclick='hienthiChitiet(" + dh.masp + ");' class='nav-link'>" + dh.masp + "</a>"+
+                " <figcaption><h3 class='text-center'>" + dh.name + "</h3></figcaption>" +
+                "<p>" + dh.description + "</p> " +
+                "</figure>";
+
+
+
+
+            $("#div1").append(hdh);
+        }
+
+
+            dsdh.forEach(hiendongho);
+
+            $("#btnTimMa").click(function(){
+                let maspcantim = $("#txtTimMa").val();
+                if(maspcantim.trim()==''){
+                    $("#tbTim").html("Nhập mã để tìm");
+                    $("#div1").html("");
+                    dsdh.forEach(hiendongho);
+                   
+                return false;
+                }
+         let dhT = dsdh.find(dhTemp => dhTemp.name ===$("#txtTimMa").val());
+            if(dhT == null){
+                $("#tbTim").html("Không tìm thấy");
+                $("#div1").html("");
+                return false;
+            }
+
+
+
+            if(dhT == null){
+                $("#tbTim").html("Không tìm thấy");
+                $("#div1").html("");
+                return false;
+            }
+
+
+            if(dhT !== null){
+                $("#tbTim").html("");
+                $("#div1").html("");
+                hiendongho(dhT);
+            }
+
+        
+                return true;
+               
+
+            });
+
+        });
+    </script>
+
+
+
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+        }
+
+        .header {
+            background-color: black;
+            color: red;
+        }
+        .header button{
+            border-radius: 5px;
+            color: white;
+        }
+
+        .footer {
+            background-color: black;
+        }
+
+        .body {
+            height: 200px;
+            color: black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            $("#mnuDangky").click(function () {
+                $("#myModal").modal();
+            });
+
+            function kiemtraTenDN() {
+                let tenDN = $("#txtTenDN").val();
+                let regexTenDN = /^[a-z]{4,}$/i;
+                if (tenDN.trim() === '') {
+                    $("#tbTenDN").html("Tên đăng nhập thì bắt buộc");
+                    return false;
+                }
+
+                if (tenDN.trim() !== '' && !regexTenDN.test(tenDN)) {
+                    $("#tbTenDN").html("Tên đăng nhập phải lớn hơn 4 ký tự");
+                    return false;
+                }
+
+                $("#tbTenDN").html("");
+                return true;
+            }
+
+            let i = 0;
+            function dangky() {
+
+
+                if (!kiemtraTenDN())
+                    return false;
+
+                let tenDN = $("#txtTenDN").val();
+                let row = "<tr><td>" + (++i) + "</td><td>" + tenDN + "</td></tr>";
+                $("#myTable").append(row);
+
+                $("#myModal").modal("hide");
+            }
+
+            $("#txtTenDN").blur(kiemtraTenDN);
+            $("#btnDangky").click(dangky);
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wapper">
+        <div class="header text-white">
+
+            <div class="row">
+                <div class="col-1"></div>
+                <a href="../html/trangchu.html" class="col-4 ">
+                    <img class="" src="../img/logo.PNG" alt="" style="width: 180px;">
+                </a>
+
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-4">
+                            <p>Email hoặc điện thoại</p>
+                        </div>
+                        <div class="col-4">Mật khẩu</div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 mr-1">
+                            <input style="color: black;" type="text" id="txtEmailDienthoai">
+                        </div>
+                        <div class="col-4 mr-1">
+                            <input style="color: black; " type="text" id="txtMatkhau">
+                        </div>
+                        <div class="">
+                            <button type="button" class="bg-primary">ĐĂNG NHẬP </button>
+                            <button id="mnuDangky" class="bg-primary">ĐĂNG KÍ</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="checkbox" checked="checked" id="txtDuytriDN">
+                            <label for="txtDuytriDN">Duy tri đăng nhập</label>
+                        </div>
+                        <div class="col-4"><a href="">Quên mật khẩu</a></div>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark w-100">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link text-danger" href="../html/trangchu.html">Trang chủ <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Đồng hồ
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="donghoco.html">Đồng hồ cơ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="donghodientu.html">Đồng hồ điện tử</a>
+                            <div class="dropdown-divider"></div>
+                       
+                          </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="dichvu.html">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="lienhe.html">Liên hệ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="gioithieu.html">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="Sitemap.html">Sitemap</a>
+                        </li>
+                        
+                      </ul>
+                      <div class="form-inline my-2 my-lg-0">
+                        <div>
+                            <span class="text-danger font-italic" id="tbTim"></span>
+                            <input class="form-control mr-sm-2" type="text" placeholder="Tên đồng hồ cần tìm"  id="txtTimMa">                        
+                          </div>
+                        <button class="text-white bg-success" id="btnTimMa">TÌM</button>
+             
+                        </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="body ">
+            <h1 class="text-center text-info">SỬA CHỮA & BẢO DƯỠNG ĐỒNG HỒ ĐEO TAY</h1>
+            <h3>1. SỬA CHỮA</h3>
+            <p>Với hệ thống thiết bị kiểm tra và sửa chữa hiện đại, tính năng chuyên dụng. Các chuyên gia kỹ thuật dày dạn kinh nghiệm về sửa chữa đồng hồ của chúng tôi sẵn sàng tư vấn và đưa ra giải pháp kỹ thuật tốt nhất, nhanh nhất để sửa chữa cho đồng hồ của Quý khách khi đồng hồ gặp trục trặc. Tuy nhiên chúng tôi chỉ tiếp nhận sửa chữa cho những đồng hồ chính hãng.</p>
+            <p>Tùy vào tình trạng thực tế và mức độ cần phải sửa chữa, bảo dưỡng cho đồng hồ của Quý khách. Sau khi kiểm tra, nhân viên kỹ thuật của chúng tôi sẽ thông báo cụ thể từng chi phí sửa chữa bảo dưỡng, linh kiện thay thế, thời gian sửa chữa vv... công việc sửa chữa và bảo dưỡng chỉ được tiến hành khi Quý khách đồng ý với các thông báo chi phí liên quan từ nhân viên của chúng tôi.
+            </p>
+            h3>2. BẢO HÀNH</h3>
+            <p>Ngoài việc bảo hành cho tất cả đồng hồ mua từ hệ thống cửa hàng Đồng Hồ Tốt. Chúng tôi tiếp nhận bảo hành cho các nhãn hiệu đồng hồ chính hãng mua từ các Đại lý khác ngoài hệ thống của chúng tôi, nhưng các nhãn hiệu đồng hồ đó phải là nhãn hiệu đồng hồ chúng tôi cũng đang cung cấp. Ngoài chính sách bảo hành theo qui định của các hãng đồng hồ, tùy vào tình hình thức tế và mức độ hư hỏng của đồng hồ, chúng tôi sẽ hỗ trợ quý khách tối đa nhất nếu có khả năng.</p>
+            <h3>3. THAY PIN</h3>
+            <p>Cần chú ý rằng đồng hồ phải được thay Pin ngay khi hết Pin và phải được thay bằng đúng chủng loại Pin. Mặc dù, hiện nay Pin được chế tạo tốt, nhưng khi Pin hết hạn có thể bị gỉ và gây hư hại tới các bộ phận khác của đồng hồ.</p>
+            <h3>4. BẢO DƯỠNG</h3>
+            <p>Bộ máy của đồng hồ được cấu thành từ rất nhiều bộ phận khác nhau, các bộ phận kết hợp với nhau hoạt động liên tục dựa trên sự truyền động. Và các loại dầu chuyên dụng chính là thành phần giúp tất cả các bộ phần này vận hành một cách êm ái. Do vậy việc rửa sạch máy và chấm dầu mới là một việc làm cần thiết giúp bộ máy chiếc đồng hồ của bạn luôn hoạt động một cách chính xác và bền bỉ trong nhiều năm. Thời gian bảo dưỡng định kỳ trung bình đối với một chiếc đồng hồ là sau khoảng 3 năm sử dụng.
+            </p>
+            <h3>5. THAY DÂY ĐEO ĐỒNG HỒ</h3>
+            <p>Vì là một chất liệu hữu cơ nên tuổi thọ của dây da bị giới hạn bởi các tác động từ môi trường, nước và qua thời gian sử dụng, đặc biệt là mồ hôi từ tay người đeo cùng với sự hao mòn sẽ làm dây da bị lão hóa nhanh chóng, dây da của đồng hồ sẽ bị hư hại và trở nên cũ nát do bị tác hại từ những nguyên nhân trên vv.. bạn có thể làm rơi mất hoặc hư hỏng đồng hồ khi dây da của đồng hồ bị đứt. Chúng tôi cung cấp dịch vụ thay Dây da cho đồng hồ với nhiều nhãn hiệu Dây da cao cấp, chất lượng tốt được nhập khẩu từ chính hãng, có nhiều kích cỡ, chủng loại da và phong phú về màu sắc có thể phù hợp với nhiều loại đồng hồ.</p>
+            <h3>6. ĐÁNH BÓNG</h3>
+            <p>Do bị trầy xước bề mặt kim loại sau nhiều năm sử dụng, cũng như bị hoen ố do tác động của mồ hôi, bụi bẩn, môi trường làm cho vỏ và dây chiếc đồng hồ của bạn xuống cấp. Để giúp bạn làm mới lại vỏ và dây của đồng hồ, chúng tôi cung cấp đến với bạn dịch vụ Đánh Bóng vỏ và dây của đồng hồ nhằm khôi phục lại độ sáng bóng cho chiếc đồng hồ của bạn.
+                
+            </p>
+        </div>
+        
+    
+
+
+
+
+
+
+        <div class="footer w-100  text-white fixed-bottom">
+            <h3 class="text-center">THÔNG TIN LIÊN HỆ</h3>
+            <div class="row">
+                <p class="col-6 text-center">Địa chỉ: xxxxxxx - Gò Vấp - HCM</p>
+                <p class="col-6 text-center"> Website: wristwatch.com</p>
+                <p class="col-6 text-center">Số điện thoại: 1900190000</p>
+                <p class="col-6 text-center"> Email: huy@gmail.com</p>
+            </div>
+        </div>
+    
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 style="color: black;">Thông tin đăng ký</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group form-row">
+                            <label class="col-3 " for="txtTenDN" style="color: black;">Tên đăng nhập: </label>
+                            <div class="col-8">
+                                <input type="text" id="txtTenDN" class="form-control">
+                                <span id="tbTenDN" class="text-danger font-italic"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-3" for="txtMK" style="color: black;">Mật khẩu: </label>
+                            <div class="col-8">
+                                <input type="password" id="txtMK" class="form-control">
+                                <span id="tbMK" class="text-danger font-italic"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-row">
+                            <label class="col-3"></label>
+                            <div class="col-8">
+                                <button type="button" class="btn btn-primary" id="btnDangky">Đăng ký</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

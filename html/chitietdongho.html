@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myImg").attr("src",localStorage.getItem("imgDH"));
+            $("#txtMa").html(localStorage.getItem("ma"));
+            $("#txtTen").html(localStorage.getItem("name"));
+            $("#txtdescription").html(localStorage.getItem("description"));
+            $("#txtThuonghieu").html(localStorage.getItem("thuonghieu"));
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <img src="" alt="" id="myImg" class="img-thumbnail" width="600" title="This is detail image product">
+            </div>
+            <div class="col-6">
+
+                <div class="row">
+                    <div class="col-12">
+                        <label style="width: 150px;">Mã sản phẩm : </label>
+                        <label class="text-success" id="txtMa"></label>
+                    </div>
+                    <div class="col-12">
+                        <label style="width: 150px;">Tên sản phẩm :</label>
+                        <label class="text-success" id="txtTen"></label>
+                    </div>
+                    
+                    <div class="col-12">
+                        <label style="width: 150px;">$: </label>
+                        <label class="text-success" id="txtdescription"></label>
+                    </div>
+                    <div class="col-12">
+                        <label style="width: 150px;">Thương hiệu: </label>
+                        <label class="text-success" id="txtThuonghieu"></label>
+                    </div>
+                </div>
+               
+                
+                
+               
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
